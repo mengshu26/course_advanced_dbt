@@ -1,8 +1,7 @@
 ## Task 2: Doc Blocks
 
 * Added doc blocks for the most used columns in the Bingeflix data source. 
-* Created a new doc block file for the ads platform.
-* Replaced all table and column descriptions in source yml and stg yml with doc block.
+* Replaced column descriptions with doc blocks.
 
 
 ## Task 3: Project Evaluator
