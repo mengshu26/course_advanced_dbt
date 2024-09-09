@@ -19,7 +19,7 @@ sources:
               - not_null
 
           - name: spend
-            description: The amount spent on the ad campaign 
+            description: The amount spent on the ad campaign
             data_tests:
               - not_null
 
@@ -28,7 +28,7 @@ sources:
             data_tests:
               - not_null
 
-          - name: ctr 
+          - name: ctr
             description: The average click-through rate on ads served
             data_tests:
               - not_null
