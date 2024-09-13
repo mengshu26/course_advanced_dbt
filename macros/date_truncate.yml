@@ -1,0 +1,12 @@
+version: 2
+
+macros:
+  - name: date_truncate
+    description: Truncates a given date to it's respective time period such as week, month, year etc.
+    arguments:
+      - name: column_name
+        type: string
+        description: The date field or expression to be truncated.
+      - name: time_period
+        type: string
+        description: The type of date truncation to be performed.

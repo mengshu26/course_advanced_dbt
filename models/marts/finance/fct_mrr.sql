@@ -15,8 +15,8 @@ monthly_subscriptions AS (
         ends_at,
         plan_name,
         pricing,
-        DATE(DATE_TRUNC('month', starts_at)) AS start_month,
-        DATE(DATE_TRUNC('month', ends_at)) AS end_month
+        {{ date_truncate('starts_at', 'month') }} AS start_month,
+        {{ date_truncate('ends_at', 'month') }} AS end_month
     FROM
         {{ ref('dim_subscriptions') }}
     WHERE
@@ -124,7 +124,7 @@ subscription_revenue_by_month AS (
 -- Calculate subscriber level churn by month by getting row for month *after* last month of activity
 subscription_churn_by_month AS (
     SELECT
-        DATEADD(MONTH, 1, date_month)::DATE AS date_month,
+        CAST(DATEADD(MONTH, 1, date_month) AS DATE) AS date_month,
         user_id,
         subscription_id,
         FALSE AS is_subscribed_current_month,
@@ -132,7 +132,7 @@ subscription_churn_by_month AS (
         last_subscription_month,
         FALSE AS is_first_subscription_month,
         FALSE AS is_last_subscription_month,
-        0.0::DECIMAL(18, 2) AS mrr
+        CAST(0.0 AS DECIMAL(18, 2)) AS mrr
     FROM
         subscription_revenue_by_month
     WHERE
